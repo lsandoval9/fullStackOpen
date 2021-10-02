@@ -13,10 +13,10 @@ function PersonsList(props) {
             console.log(filteredPersons)
 
             personService.deletePerson(id)
-            .then(response => toggleMessage(`Succesfully deleted ${name}`, false))
+            .then(response => {toggleMessage(`Succesfully deleted ${name}`, false); getPersonList();})
             .catch(error =>  toggleMessage(`${name} is already deleted`, true));
 
-            getPersonList();
+            
 
             
         }

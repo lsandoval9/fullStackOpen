@@ -1,9 +1,13 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/persons";
+const baseURL = process.env.REACT_APP_API;
+
+
 
 const getAll = () => {
+    console.log("address: ", baseURL)
     return axios.get(baseURL);
+    
 };
 
 const createPerson = (personData) => {
