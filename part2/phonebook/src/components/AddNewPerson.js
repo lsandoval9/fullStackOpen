@@ -24,16 +24,30 @@ function AddNewPerson(props) {
                     (person) => person.name === newName
                 )[0];
 
+                console.log(filteredPerson)
+
                 personService.updatePerson(filteredPerson.id, {
                     ...filteredPerson,
                     number: newNumber,
+                })
+                
+                .then(() => {
+
+                    getPersonList();
+
+                    toggleMessage("Succesfull updated " + filteredPerson.name, false)
+
+                })
+                
+                .catch(error => {
+
+                    console.log(error)
+
                 });
 
                 
 
-                getPersonList();
-
-                toggleMessage("Succesfull updated " + filteredPerson.name, false)
+                
             }
 
             return;
@@ -45,11 +59,22 @@ function AddNewPerson(props) {
             return;
         }
 
-        personService.createPerson({name: newName, number: newNumber});
+        personService.createPerson({name: newName, number: newNumber})
+        .then(() => {
 
-        getPersonList();
+            toggleMessage("Succesfull created " + newName, false)
 
-        toggleMessage("Succesfull created " + newName, false)
+            getPersonList();
+
+        })
+        
+        .catch(error => {
+
+            console.log(error)
+
+        });
+
+        
     };
 
     const onNameChange = (event) => {
