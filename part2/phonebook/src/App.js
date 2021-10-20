@@ -36,7 +36,7 @@ const App = () => {
 
         setTimeout(() => {
             setShowMessage(false)
-        }, 6000);
+        }, 8000);
 
     }
 

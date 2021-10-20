@@ -43,6 +43,8 @@ function AddNewPerson(props) {
 
                     console.log(error)
 
+                    toggleMessage(error.response.data.error, true)
+
                 });
 
                 
@@ -70,7 +72,9 @@ function AddNewPerson(props) {
         
         .catch(error => {
 
-            console.log(error)
+            toggleMessage(error.response.data.error, true)
+
+            console.log(error.response.data.error)
 
         });
 
