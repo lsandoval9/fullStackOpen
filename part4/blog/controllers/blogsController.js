@@ -51,13 +51,8 @@ blogsRouter.post("/api/blogs", middleware.tokenExtractor, async (request, respon
         { $push: { blogs: createdBlog.id } }
     );
 
-    
 
-    const blog = new Blog(newBlog);
-
-    const result = await blog.save();
-
-    return response.status(201).json(result);
+    return response.status(201).json(createdBlog);
 });
 
 blogsRouter.delete("/api/blogs/:id", middleware.tokenExtractor, middleware.userExtractor, 
@@ -75,8 +70,6 @@ async (request, response, next) => {
         if (owner.toString() !== request.userId) {
             return response.sendStatus(401);
         }
-
-        return response.sendStatus(200);
 
         const result = await Blog.deleteOne({
             _id: ObjectId(request.params.id),
@@ -108,10 +101,21 @@ blogsRouter.put("/api/blogs/:id", async (request, response, next) => {
     }
 
     try {
-        const result = await Blog.updateOne({
-            _id: ObjectId(request.params.id),
-            ...request.body
-        });
+
+        console.log(request.body.id)
+
+        const updatedBlog= {
+
+            title: request.body.title,
+            author: request.body.author,
+            url: request.body.url,
+            likes: request.body.likes,
+
+        }
+
+        const result = await Blog.findByIdAndUpdate(request.params.id,
+            updatedBlog
+        );
 
         if (result.modifiedCount === 0) {
             return response

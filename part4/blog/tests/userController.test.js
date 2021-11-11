@@ -11,6 +11,8 @@ const api = supertest(app);
 describe("userController", () => {
     beforeEach(async () => {
         await User.deleteMany({});
+
+        
     });
 
     test("should create a valid user", async () => {

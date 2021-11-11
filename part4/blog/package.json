@@ -21,7 +21,8 @@
     "scripts": {
         "start": "node app.js",
         "dev": "nodemon app.js",
-        "test": "NODE_ENV=test jest --verbose --runInBand"
+        "test": "NODE_ENV=test jest --verbose --forceExit --detectOpenHandles --watchAll --maxWorkers=1 ",
+        "start:test": "cross-env NODE_ENV=e2e node app.js"
     },
     "devDependencies": {
         "jest": "^27.3.1",
