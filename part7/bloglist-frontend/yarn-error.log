@@ -1,0 +1,68 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js install
+
+PATH: 
+  /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/games:/home/lsandoval9/bin:/usr/sbin:/home/lsandoval9/.composer/vendor/bin:/home/lsandoval9/.npm-global/bin:/home/lsandoval9/.npm-global/bin
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  14.18.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@testing-library%2fjest-dom: ETIMEDOUT
+      at Timeout._onTimeout (/usr/share/yarn/lib/cli.js:141545:19)
+      at listOnTimeout (internal/timers.js:557:17)
+      at processTimers (internal/timers.js:500:7)
+
+npm manifest: 
+  {
+      "name": "bloglist-frontend",
+      "version": "0.1.0",
+      "private": true,
+      "dependencies": {
+          "@testing-library/jest-dom": "^5.11.9",
+          "@testing-library/react": "^11.2.5",
+          "@testing-library/user-event": "^12.6.3",
+          "axios": "^0.21.1",
+          "react": "^17.0.1",
+          "react-dom": "^17.0.1",
+          "react-scripts": "4.0.1",
+          "web-vitals": "^0.2.4"
+      },
+      "scripts": {
+          "start": "react-scripts start",
+          "build": "react-scripts build",
+          "test": "react-scripts test",
+          "eject": "react-scripts eject"
+      },
+      "eslintConfig": {
+          "extends": [
+              "react-app",
+              "react-app/jest"
+          ]
+      },
+      "browserslist": {
+          "production": [
+              ">0.2%",
+              "not dead",
+              "not op_mini all"
+          ],
+          "development": [
+              "last 1 chrome version",
+              "last 1 firefox version",
+              "last 1 safari version"
+          ]
+      },
+      "proxy": "http://localhost:8080"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

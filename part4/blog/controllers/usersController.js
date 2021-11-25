@@ -23,6 +23,7 @@ usersRouter.get("/api/users", async (request, response, next) => {
 
 })
 
+
 // Create user
 usersRouter.post("/api/users", async (request, response, next) => {
     const body = request.body;

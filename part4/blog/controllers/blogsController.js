@@ -55,6 +55,58 @@ blogsRouter.post("/api/blogs", middleware.tokenExtractor, async (request, respon
     return response.status(201).json(createdBlog);
 });
 
+blogsRouter.get("/api/blogs/:id/comments", middleware.tokenExtractor, async (request, response, next) => {
+
+    const decodedToken = request.token;
+
+    if (!decodedToken.id) {
+        return response.status(401).json({ error: 'token missing or invalid' })
+    }
+
+    try {
+        const comments = (await Blog.findById(request.params.id, "comments")).comments
+
+        return response.status(200).json(comments)
+
+    } catch (error) {
+        
+        console.dir(error);
+        next(error);
+
+    }
+
+})
+
+blogsRouter.post("/api/blogs/:id/comments", middleware.tokenExtractor, async (request, response, next) => {
+
+    console.log(request.body)
+
+    if (!request.body.comment) {
+        return response.status(400).send("Comment is required");
+    }
+    
+    const decodedToken = request.token;
+
+    if (!decodedToken.id) {
+        return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+    
+    const comment = request.body.comment;
+
+    try {
+
+        await Blog.updateOne({"_id": request.params.id}, {$push: {comments: comment}})
+
+        return response.sendStatus(200);
+
+    } catch (error) {
+        console.dir(error)
+        next(error)
+    }
+
+})
+
 blogsRouter.delete("/api/blogs/:id", middleware.tokenExtractor, middleware.userExtractor, 
 async (request, response, next) => {
 
