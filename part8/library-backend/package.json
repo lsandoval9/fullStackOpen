@@ -1,0 +1,27 @@
+{
+    "name": "library-backend",
+    "version": "1.0.0",
+    "description": "fullStackOpen part 8",
+    "main": "src/app.js",
+    "scripts": {
+        "start": "node src/app.js",
+        "dev": "nodemon src/app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "lsandoval9",
+    "license": "MIT",
+    "dependencies": {
+        "apollo-server": "^2.25.2",
+        "apollo-server-core": "^3.5.0",
+        "graphql": "^15.7.2",
+        "graphql-subscriptions": "^2.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.0.14",
+        "mongoose-unique-validator": "^3.0.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "dotenv": "^10.0.0",
+        "nodemon": "^2.0.15"
+    }
+}
